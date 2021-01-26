@@ -46,8 +46,6 @@ class PasswordGenerator
 
   def sort_options(options)
     while options != ""
-      # Yes, this is a temporary variable. But the one line
-      # alternative looks much less understandable without it.
       sliced_item = options.slice!(/.\d*/)
       @sorted_options[sliced_item[0]] = sliced_item.slice!(/\d+/)
     end
@@ -124,11 +122,6 @@ class PasswordGenerator
 end
 
 if __FILE__ == $0
-  num_arguments = 2
-  length = "10"
-  options = "u1ls2"
-
-  password_generator = PasswordGenerator.new(num_arguments, length, options)
-  #password_generator = PasswordGenerator.new(ARGV.length, ARGV[0], ARGV[1].dup)
+  password_generator = PasswordGenerator.new(ARGV.length, ARGV[0], ARGV[1].dup)
   password_generator.print_password
 end
